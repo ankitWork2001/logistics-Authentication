@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:logistic/pages/dashboard/add_address_screen_receiver.dart';
 
-class AddAddressScreen extends StatefulWidget {
-  const AddAddressScreen({super.key});
+class AddAddressScreenSender extends StatefulWidget {
+  const AddAddressScreenSender({super.key});
 
   @override
-  State<AddAddressScreen> createState() => _AddAddressScreenState();
+  State<AddAddressScreenSender> createState() => _AddAddressScreenSenderState();
 }
 
-class _AddAddressScreenState extends State<AddAddressScreen> {
+class _AddAddressScreenSenderState extends State<AddAddressScreenSender> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +58,9 @@ appBar: AppBar(
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(onPressed: (){}, child: Text("Next")),
+                ElevatedButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AddAddressScreenReceiver()));
+                }, child: Text("Next")),
               ],
             )
           ],

@@ -15,144 +15,144 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColor.deepOceanBlue, // Replace AppColor.deepOceanBlue with actual color
+      backgroundColor: AppColor.deepOceanBlue,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end, // Align content to the start
-          children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        child: SingleChildScrollView( // Prevent bottom overflow
+          physics: BouncingScrollPhysics(),
+          child: Column(
             children: [
-              Text("Logo Here",style: TextStyle(fontSize: 30 ,color: Colors.white,),)
-            ],
-          ),
-            Container(
-            margin: EdgeInsets.only(top: 50),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), // Round only the top-left corner
-                  topRight: Radius.circular(20), // Round only the top-right corner
+              SizedBox(height: MediaQuery.of(context).size.height * 0.2), // Adds spacing from top
+              Center(
+                child: Text(
+                  "Logo",
+                  style: TextStyle(fontSize: 30, color: Colors.white),
                 ),
               ),
-
-              padding: const EdgeInsets.all(16), // Add some padding
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Align content within column
-                children: [
-                  Text(
-                    "Sign Up",
-                    style: const TextStyle(
-                      fontFamily: 'TimesNewRoman',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+              SizedBox(height: 30), // Add spacing
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
                   ),
-                  const SizedBox(height: 16), // Add spacing
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Evenly space the items
-                    children: [
-                      Flexible(
-                        child: RadioListTile<String>(
-                          title: const Text("User"),
-                          value: "User",
-                          groupValue: selectedValue,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        child: RadioListTile<String>(
-                          title: const Text("Driver"),
-                          value: "Driver",
-                          groupValue: selectedValue,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 16), // Add spacing
-                 CustomText(text: "Email:"),
-                  TextFormField(
-                        decoration: InputDecoration(
-                          hintText: "Enter Email Id",
-                        ),
-                  ),
-                  SizedBox(height: 10,),
-                  CustomText(text: "Mobile Number:"),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Enter mobile Number",
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  CustomText(text: "Password:"),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Password",
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  CustomText(text: "Confirm Password"),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Confirm Password",
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>OtpScreen()));
-                    },
-                    child: Container(
-                      width: double.infinity, // Ensures the container spans the full width
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20), // Adjust horizontal padding as needed
-                      decoration: BoxDecoration(
-                        color: AppColor.deepOceanBlue,
-                        borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(color: Colors.white), // Optional: Style the text
-                        textAlign: TextAlign.center, // Center align the text
+                ),
+                padding: const EdgeInsets.only(top: 16,left: 16,right: 16,bottom: 50),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sign Up",
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10,),
-                  InkWell(
-                    onTap: (){},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Already Have an Account?",style: TextStyle(fontWeight: FontWeight.bold),),
-                        Text("Sign In",style: TextStyle(color: AppColor.deepOceanBlue,fontWeight: FontWeight.bold),),
+                        Flexible(
+                          child: RadioListTile<String>(
+                            title: const Text("User"),
+                            value: "User",
+                            groupValue: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Flexible(
+                          child: RadioListTile<String>(
+                            title: const Text("Driver"),
+                            value: "Driver",
+                            groupValue: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+                              });
+                            },
+                          ),
+                        ),
                       ],
                     ),
-                  )
+                    const SizedBox(height: 16),
+                    CustomText(text: "Email:"),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Enter Email Id"),
+                    ),
+                    SizedBox(height: 10),
+                    CustomText(text: "Mobile Number:"),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Enter mobile Number"),
+                    ),
+                    SizedBox(height: 10),
+                    CustomText(text: "Password:"),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(hintText: "Enter Password"),
+                    ),
+                    SizedBox(height: 10),
+                    CustomText(text: "Confirm Password"),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(hintText: "Enter Confirm Password"),
+                    ),
+                    SizedBox(height: 20),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => OtpScreen()),
+                        );
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        decoration: BoxDecoration(
+                          color: AppColor.deepOceanBlue,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    InkWell(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Already Have an Account?", style: TextStyle(fontWeight: FontWeight.bold)),
+                          SizedBox(width: 5),
+                          Text(
+                            "Sign In",
+                            style: TextStyle(color: AppColor.deepOceanBlue, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
 
-                ],
+                  ],
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-Widget CustomText({required String text}){
-  return  Text(text,style:const TextStyle(
-
-      fontWeight: FontWeight.bold,
-      fontSize: 16
-  ),);
+Widget CustomText({required String text}) {
+  return Text(
+    text,
+    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+  );
 }

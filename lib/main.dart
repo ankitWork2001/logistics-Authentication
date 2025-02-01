@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logistic/components/color/app_color.dart';
+import 'package:logistic/pages/dashboard/book_courier.dart';
+import 'package:logistic/pages/otp_screen.dart';
 import 'package:logistic/pages/sign_up_page.dart';
 
 void main() {
