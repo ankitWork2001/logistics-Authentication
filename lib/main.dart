@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:logistic/components/color/app_color.dart';
 import 'package:logistic/pages/dashboard/book_courier.dart';
+import 'package:logistic/pages/orderScreens/order_details.dart';
 import 'package:logistic/pages/otp_screen.dart';
+import 'package:logistic/pages/profile/profile.dart';
 import 'package:logistic/pages/sign_up_page.dart';
+
+import 'pages/orderScreens/order_track.dart';
+import 'pages/paymentDetails/payment_details.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColor.deepOceanBlue),
         useMaterial3: true,
       ),
-      home: const SignUpPage(),
+      home: const OrderTrack(),
     );
   }
 }
